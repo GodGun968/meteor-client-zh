@@ -5,17 +5,20 @@
 
 package meteordevelopment.meteorclient.systems.modules;
 
+import meteordevelopment.meteorclient.utils.misc.Translate;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.function.Supplier;
 
 public class Category {
     public final String name;
+    public final String title;
     public final Supplier<ItemStack> icon;
     private final int nameHash;
 
     public Category(String name, Supplier<ItemStack> icon) {
         this.name = name;
+        this.title = Translate.text(name);
         this.nameHash = name.hashCode();
         this.icon = icon == null ? () -> ItemStack.EMPTY : icon;
     }

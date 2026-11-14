@@ -14,6 +14,7 @@ import meteordevelopment.meteorclient.gui.widgets.pressable.WPressable;
 import net.minecraft.client.input.MouseButtonEvent;
 import net.minecraft.client.input.CharacterEvent;
 import net.minecraft.client.input.KeyEvent;
+import meteordevelopment.meteorclient.utils.misc.Translate;
 import net.minecraft.util.Mth;
 
 import static meteordevelopment.meteorclient.utils.Utils.getWindowHeight;
@@ -62,7 +63,7 @@ public abstract class WDropdown<T> extends WPressable {
 
         maxValueWidth = 0;
         for (T value : values) {
-            double valueWidth = theme.textWidth(value.toString());
+            double valueWidth = theme.textWidth(Translate.text(value.toString()));
             maxValueWidth = Math.max(maxValueWidth, valueWidth);
         }
 

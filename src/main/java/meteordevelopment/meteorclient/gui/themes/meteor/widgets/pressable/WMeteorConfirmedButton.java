@@ -28,7 +28,7 @@ public class WMeteorConfirmedButton extends WConfirmedButton implements MeteorWi
 
         renderBackground(renderer, this, outline, bg);
 
-        String text = getText();
+        String text = getDisplayText();
 
         if (text != null) {
             renderer.text(text, x + width / 2 - textWidth / 2, y + pad, fg, false);

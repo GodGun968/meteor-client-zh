@@ -6,6 +6,7 @@
 package meteordevelopment.meteorclient.gui.widgets.pressable;
 
 import meteordevelopment.meteorclient.gui.renderer.packer.GuiTexture;
+import meteordevelopment.meteorclient.utils.misc.Translate;
 import net.minecraft.client.input.MouseButtonEvent;
 
 public abstract class WConfirmedButton extends WButton {
@@ -39,6 +40,11 @@ public abstract class WConfirmedButton extends WButton {
     @Override
     public String getText() {
         return pressedOnce ? confirmText : text;
+    }
+
+    @Override
+    public String getDisplayText() {
+        return Translate.text(pressedOnce ? confirmText : text);
     }
 
     public void set(String text, String confirmText) {

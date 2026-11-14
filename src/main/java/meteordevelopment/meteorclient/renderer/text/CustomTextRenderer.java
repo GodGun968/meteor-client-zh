@@ -11,6 +11,7 @@ import meteordevelopment.meteorclient.renderer.MeteorRenderPipelines;
 import meteordevelopment.meteorclient.utils.render.color.Color;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
+import org.jspecify.annotations.Nullable;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -19,10 +20,12 @@ public class CustomTextRenderer implements TextRenderer {
     public static final Color SHADOW_COLOR = new Color(60, 60, 60, 180);
 
     private final MeshBuilder mesh = new MeshBuilder(MeteorRenderPipelines.UI_TEXT);
+    private final MeshBuilder cjkMesh = new MeshBuilder(MeteorRenderPipelines.UI_TEXT);
 
     public final FontFace fontFace;
 
     private final Font[] fonts;
+    private final @Nullable Font cjkFont;
     private Font font;
 
     private boolean building;
@@ -39,18 +42,25 @@ public class CustomTextRenderer implements TextRenderer {
         for (int i = 0; i < fonts.length; i++) {
             fonts[i] = new Font(buffer, (int) Math.round(27 * ((i * 0.5) + 1)));
         }
+
+        // 中文图集所有字号共用，当前字体缺字时从这张图集里取
+        cjkFont = CjkFont.get();
     }
 
     @Override
     public void setAlpha(double a) {
         mesh.alpha = a;
+        cjkMesh.alpha = a;
     }
 
     @Override
     public void begin(GuiGraphicsExtractor graphics, double scale, boolean scaleOnly, boolean big) {
         if (building) throw new RuntimeException("CustomTextRenderer.begin() called twice");
 
-        if (!scaleOnly) mesh.begin();
+        if (!scaleOnly) {
+            mesh.begin();
+            if (cjkFont != null) cjkMesh.begin();
+        }
 
         if (big) {
             this.font = fonts[fonts.length - 1];
@@ -79,7 +89,23 @@ public class CustomTextRenderer implements TextRenderer {
         if (text.isEmpty()) return 0;
 
         Font font = building ? this.font : fonts[0];
-        return (font.getWidth(text, length) + (shadow ? 1 : 0)) * scale / 1.5;
+        double width;
+
+        if (cjkFont == null) {
+            width = font.getWidth(text, length);
+        } else {
+            double ratio = font.getHeight() / (double) cjkFont.getHeight();
+            width = 0;
+
+            for (int i = 0; i < length; i++) {
+                int cp = text.charAt(i);
+
+                if (!font.hasGlyph(cp) && cjkFont.hasGlyph(cp)) width += cjkFont.getAdvance(cp) * ratio;
+                else width += font.getAdvance(cp);
+            }
+        }
+
+        return (width + (shadow ? 1 : 0)) * scale / 1.5;
     }
 
     @Override
@@ -97,15 +123,50 @@ public class CustomTextRenderer implements TextRenderer {
             int preShadowA = SHADOW_COLOR.a;
             SHADOW_COLOR.a = (int) (color.a / 255.0 * preShadowA);
 
-            width = font.render(mesh, text, x + fontScale * scale / 1.5, y + fontScale * scale / 1.5, SHADOW_COLOR, scale / 1.5);
-            font.render(mesh, text, x, y, color, scale / 1.5);
+            double offset = fontScale * scale / 1.5;
+            renderRuns(text, x + offset, y + offset, SHADOW_COLOR);
+            width = renderRuns(text, x, y, color);
 
             SHADOW_COLOR.a = preShadowA;
         } else {
-            width = font.render(mesh, text, x, y, color, scale / 1.5);
+            width = renderRuns(text, x, y, color);
         }
 
         return width;
+    }
+
+    /**
+     * 按字形来源把字符串切成若干段，分别写入当前字体的网格和中文图集的网格。
+     */
+    private double renderRuns(String text, double x, double y, Color color) {
+        double scale = this.scale / 1.5;
+
+        if (cjkFont == null) return font.render(mesh, text, x, y, color, scale);
+
+        double cjkScale = scale * font.getHeight() / (double) cjkFont.getHeight();
+
+        int length = text.length();
+        int i = 0;
+
+        while (i < length) {
+            boolean cjk = useCjk(text.charAt(i));
+
+            int j = i + 1;
+            while (j < length && useCjk(text.charAt(j)) == cjk) j++;
+
+            String run = text.substring(i, j);
+
+            if (cjk) x = cjkFont.render(cjkMesh, run, x, y, color, cjkScale);
+            else x = font.render(mesh, run, x, y, color, scale);
+
+            i = j;
+        }
+
+        return x;
+    }
+
+    private boolean useCjk(int codepoint) {
+        return cjkFont != null && !font.hasGlyph(codepoint) && cjkFont.hasGlyph(codepoint);
     }
 
     @Override
@@ -120,12 +181,27 @@ public class CustomTextRenderer implements TextRenderer {
         if (!scaleOnly) {
             mesh.end();
 
-            MeshRenderer.begin()
-                .attachments(Minecraft.getInstance().gameRenderer.mainRenderTarget())
-                .pipeline(MeteorRenderPipelines.UI_TEXT)
-                .mesh(mesh)
-                .sampler("u_Texture", font.texture.getTextureView(), font.texture.getSampler())
-                .end();
+            if (mesh.getIndicesCount() > 0) {
+                MeshRenderer.begin()
+                    .attachments(Minecraft.getInstance().gameRenderer.mainRenderTarget())
+                    .pipeline(MeteorRenderPipelines.UI_TEXT)
+                    .mesh(mesh)
+                    .sampler("u_Texture", font.texture.getTextureView(), font.texture.getSampler())
+                    .end();
+            }
+
+            if (cjkFont != null) {
+                cjkMesh.end();
+
+                if (cjkMesh.getIndicesCount() > 0) {
+                    MeshRenderer.begin()
+                        .attachments(Minecraft.getInstance().gameRenderer.mainRenderTarget())
+                        .pipeline(MeteorRenderPipelines.UI_TEXT)
+                        .mesh(cjkMesh)
+                        .sampler("u_Texture", cjkFont.texture.getTextureView(), cjkFont.texture.getSampler())
+                        .end();
+                }
+            }
         }
 
         building = false;

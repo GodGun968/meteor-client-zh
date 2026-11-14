@@ -5,6 +5,8 @@
 
 package meteordevelopment.meteorclient.gui.widgets;
 
+import meteordevelopment.meteorclient.utils.misc.Translate;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +25,7 @@ public abstract class WMultiLabel extends WLabel {
     protected void onCalculateSize() {
         lines.clear();
 
-        String[] textLines = text.split("\n");
+        String[] textLines = displayText.split("\n");
         double maxLineWidth = 0;
 
         if (this.maxWidth == 0) {
@@ -84,8 +86,10 @@ public abstract class WMultiLabel extends WLabel {
 
     @Override
     public void set(String text) {
-        if (!text.equals(this.text)) invalidate();
+        String displayText = Translate.text(text);
+        if (!displayText.equals(this.displayText)) invalidate();
 
         this.text = text;
+        this.displayText = displayText;
     }
 }

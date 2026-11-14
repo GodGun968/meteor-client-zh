@@ -12,6 +12,7 @@ import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import meteordevelopment.meteorclient.MeteorClient;
 import meteordevelopment.meteorclient.systems.config.Config;
 import meteordevelopment.meteorclient.utils.Utils;
+import meteordevelopment.meteorclient.utils.misc.Translate;
 import meteordevelopment.meteorclient.utils.player.ChatUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientSuggestionProvider;
@@ -35,7 +36,7 @@ public abstract class Command {
     public Command(String name, String description, String... aliases) {
         this.name = name;
         this.title = Utils.nameToTitle(name);
-        this.description = description;
+        this.description = Translate.text(description);
         this.aliases = List.of(aliases);
     }
 

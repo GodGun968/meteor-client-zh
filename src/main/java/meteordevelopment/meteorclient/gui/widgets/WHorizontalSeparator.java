@@ -5,12 +5,14 @@
 
 package meteordevelopment.meteorclient.gui.widgets;
 
+import meteordevelopment.meteorclient.utils.misc.Translate;
+
 public abstract class WHorizontalSeparator extends WWidget {
     protected String text;
     protected double textWidth;
 
     public WHorizontalSeparator(String text) {
-        this.text = text;
+        this.text = Translate.text(text);
     }
 
     @Override

@@ -6,6 +6,7 @@
 package meteordevelopment.meteorclient.systems.hud;
 
 import meteordevelopment.meteorclient.utils.Utils;
+import meteordevelopment.meteorclient.utils.misc.Translate;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -26,7 +27,7 @@ public class HudElementInfo<T extends HudElement> {
         this.group = group;
         this.name = name;
         this.title = title;
-        this.description = description;
+        this.description = Translate.text(description);
 
         this.factory = factory;
         this.presets = new ArrayList<>();

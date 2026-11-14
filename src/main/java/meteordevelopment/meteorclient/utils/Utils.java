@@ -19,6 +19,7 @@ import meteordevelopment.meteorclient.systems.modules.Modules;
 import meteordevelopment.meteorclient.systems.modules.render.BetterTooltips;
 import meteordevelopment.meteorclient.systems.modules.world.Timer;
 import meteordevelopment.meteorclient.utils.misc.Names;
+import meteordevelopment.meteorclient.utils.misc.Translate;
 import meteordevelopment.meteorclient.utils.player.EChestMemory;
 import meteordevelopment.meteorclient.utils.render.PeekScreen;
 import meteordevelopment.meteorclient.utils.render.RenderUtils;
@@ -439,6 +440,9 @@ public class Utils {
     }
 
     public static String nameToTitle(String name) {
+        String translated = Translate.name(name);
+        if (!translated.equals(name)) return translated;
+
         return Arrays.stream(name.split("-")).map(StringUtils::capitalize).collect(Collectors.joining(" "));
     }
 

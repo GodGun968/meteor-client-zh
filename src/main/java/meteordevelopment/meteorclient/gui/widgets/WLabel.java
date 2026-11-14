@@ -6,6 +6,7 @@
 package meteordevelopment.meteorclient.gui.widgets;
 
 import meteordevelopment.meteorclient.gui.widgets.pressable.WPressable;
+import meteordevelopment.meteorclient.utils.misc.Translate;
 import meteordevelopment.meteorclient.utils.render.color.Color;
 import net.minecraft.client.input.MouseButtonEvent;
 
@@ -13,16 +14,18 @@ public abstract class WLabel extends WPressable {
     public Color color;
 
     protected String text;
+    protected String displayText;
     protected boolean title;
 
     public WLabel(String text, boolean title) {
         this.text = text;
+        this.displayText = Translate.text(text);
         this.title = title;
     }
 
     @Override
     protected void onCalculateSize() {
-        width = theme.textWidth(text, text.length(), title);
+        width = theme.textWidth(displayText, displayText.length(), title);
         height = theme.textHeight(title);
     }
 
@@ -39,13 +42,23 @@ public abstract class WLabel extends WPressable {
     }
 
     public void set(String text) {
-        if (Math.round(theme.textWidth(text, text.length(), title)) != width) invalidate();
+        String displayText = Translate.text(text);
+
+        if (Math.round(theme.textWidth(displayText, displayText.length(), title)) != width) invalidate();
 
         this.text = text;
+        this.displayText = displayText;
     }
 
     public String get() {
         return text;
+    }
+
+    /**
+     * 实际绘制用的文本（已汉化），{@link #get()} 始终返回原始文本。
+     */
+    public String getDisplayText() {
+        return displayText;
     }
 
     public WLabel color(Color color) {

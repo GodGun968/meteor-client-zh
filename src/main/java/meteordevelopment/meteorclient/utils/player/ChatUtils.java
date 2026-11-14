@@ -13,11 +13,13 @@ import meteordevelopment.meteorclient.pathing.BaritoneUtils;
 import meteordevelopment.meteorclient.systems.config.Config;
 import meteordevelopment.meteorclient.utils.PostInit;
 import meteordevelopment.meteorclient.utils.misc.text.MeteorClickEvent;
+import meteordevelopment.meteorclient.utils.misc.Translate;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.*;
 import net.minecraft.world.phys.Vec3;
 import org.jspecify.annotations.Nullable;
 
+import java.util.IllegalFormatException;
 import java.util.function.Supplier;
 
 import static meteordevelopment.meteorclient.MeteorClient.mc;
@@ -132,12 +134,22 @@ public class ChatUtils {
     }
 
     public static void sendMsg(int id, @Nullable String prefixTitle, @Nullable ChatFormatting prefixColor, ChatFormatting messageColor, String messageContent, Object... args) {
-        MutableComponent message = formatMsg(String.format(messageContent, args), messageColor);
+        String translated = Translate.text(messageContent);
+        String formatted;
+
+        try {
+            formatted = String.format(translated, args);
+        } catch (IllegalFormatException e) {
+            // 译文里的格式符写错时退回原文，避免整条消息发不出去
+            formatted = String.format(messageContent, args);
+        }
+
+        MutableComponent message = formatMsg(formatted, messageColor);
         sendMsg(id, prefixTitle, prefixColor, message);
     }
 
     public static void sendMsg(int id, @Nullable String prefixTitle, @Nullable ChatFormatting prefixColor, String messageContent, ChatFormatting messageColor) {
-        MutableComponent message = formatMsg(messageContent, messageColor);
+        MutableComponent message = formatMsg(Translate.text(messageContent), messageColor);
         sendMsg(id, prefixTitle, prefixColor, message);
     }
 
