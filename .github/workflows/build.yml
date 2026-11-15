@@ -36,6 +36,9 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: meteor-client-zh-${{ github.run_number }}
-          path: build/libs/*.jar
+          path: |
+            build/libs/*.jar
+            !build/libs/*-sources.jar
+            !build/libs/*-javadoc.jar
           if-no-files-found: error
           retention-days: 30
