@@ -442,10 +442,10 @@ public class StashFinder extends Module {
             .setStyle(Style.EMPTY
                 .withColor(ChatFormatting.WHITE)
                 .applyFormat(ChatFormatting.UNDERLINE)
-                .withHoverEvent(new HoverEvent.ShowText(Component.literal("Path to stash")))
+                .withHoverEvent(new HoverEvent.ShowText(Component.literal("仓库路径")))
                 .withClickEvent(new RunnableClickEvent(() -> PathManagers.get().moveTo(new BlockPos(chunk.chunkPos.getMiddleBlockX(), 0, chunk.chunkPos.getMiddleBlockZ()), true))));
 
-        MutableComponent message = Component.literal("Found stash at ")
+        MutableComponent message = Component.literal("发现仓库于 ")
             .withStyle(ChatFormatting.GRAY)
             .append(Component.literal("[").withStyle(ChatFormatting.GRAY))
             .append(coords)
@@ -546,7 +546,7 @@ public class StashFinder extends Module {
         private final Chunk chunk;
 
         public ChunkScreen(GuiTheme theme, Chunk chunk) {
-            super(theme, "Chunk at " + chunk.chunkPos.getMiddleBlockX() + ", " + chunk.chunkPos.getMiddleBlockZ());
+            super(theme, "区块坐标 " + chunk.chunkPos.getMiddleBlockX() + ", " + chunk.chunkPos.getMiddleBlockZ());
 
             this.chunk = chunk;
         }

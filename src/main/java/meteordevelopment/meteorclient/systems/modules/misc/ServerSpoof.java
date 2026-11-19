@@ -119,18 +119,18 @@ public class ServerSpoof extends Module {
         event.connection.send(new ServerboundResourcePackPacket(packet.id(), ServerboundResourcePackPacket.Action.DOWNLOADED));
         event.connection.send(new ServerboundResourcePackPacket(packet.id(), ServerboundResourcePackPacket.Action.SUCCESSFULLY_LOADED));
 
-        msg = Component.literal("This server has ");
+        msg = Component.literal("此服务器有 ");
         msg.append(packet.required() ? "a required " : "an optional ").append("resource pack. ");
 
-        MutableComponent link = Component.literal("[Open URL]");
+        MutableComponent link = Component.literal("[打开链接]");
         link.setStyle(link.getStyle()
             .withColor(ChatFormatting.BLUE)
             .withUnderlined(true)
             .withClickEvent(new ClickEvent.OpenUrl(URI.create(packet.url())))
-            .withHoverEvent(new HoverEvent.ShowText(Component.literal("Click to open the pack url")))
+            .withHoverEvent(new HoverEvent.ShowText(Component.literal("点击打开资源包链接")))
         );
 
-        MutableComponent acceptance = Component.literal("[Accept Pack]");
+        MutableComponent acceptance = Component.literal("[接受资源包]");
         acceptance.setStyle(acceptance.getStyle()
             .withColor(ChatFormatting.DARK_GREEN)
             .withUnderlined(true)
@@ -142,7 +142,7 @@ public class ServerSpoof extends Module {
                     mc.getDownloadedPackSource().pushPack(packet.id(), url, packet.hash());
                 }
             }))
-            .withHoverEvent(new HoverEvent.ShowText(Component.literal("Click to accept and apply the pack.")))
+            .withHoverEvent(new HoverEvent.ShowText(Component.literal("点击接受并应用资源包。")))
         );
 
         msg.append(link).append(" ");

@@ -218,7 +218,7 @@ public class Notifier extends Module {
                 }
             } else {
                 MutableComponent text = Component.literal(event.entity.getType().getDescription().getString()).withStyle(ChatFormatting.WHITE);
-                text.append(Component.literal(" has spawned at ").withStyle(ChatFormatting.GRAY));
+                text.append(Component.literal(" 已生成于 ").withStyle(ChatFormatting.GRAY));
                 text.append(formatCoords(event.entity.position()));
                 text.append(Component.literal(".").withStyle(ChatFormatting.GRAY));
                 info(text);
@@ -242,7 +242,7 @@ public class Notifier extends Module {
                 }
             } else {
                 MutableComponent text = Component.literal(event.entity.getType().getDescription().getString()).withStyle(ChatFormatting.WHITE);
-                text.append(Component.literal(" has despawned at ").withStyle(ChatFormatting.GRAY));
+                text.append(Component.literal(" 已消失于 ").withStyle(ChatFormatting.GRAY));
                 text.append(formatCoords(event.entity.position()));
                 text.append(Component.literal(".").withStyle(ChatFormatting.GRAY));
                 info(text);

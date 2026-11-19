@@ -26,7 +26,7 @@ public class ProxiesImportScreen extends WindowScreen {
     private final File file;
 
     public ProxiesImportScreen(GuiTheme theme, File file) {
-        super(theme, "Import Proxies");
+        super(theme, "导入代理");
         this.file = file;
         this.onClosed(() -> {
             if (parent instanceof ProxiesScreen screen) {

@@ -92,7 +92,7 @@ public class LocateCommand extends Command {
             for (MapDecorations.Entry decoration : mapDecorationsComponent.decorations().values()) {
                 if (decoration.type().value().assetId().toString().equals("minecraft:red_x")) {
                     Vec3 coords = new Vec3(decoration.x(), 62, decoration.z());
-                    MutableComponent text = Component.literal("Buried Treasure located at ");
+                    MutableComponent text = Component.literal("埋藏的宝藏位于 ");
                     text.append(ChatUtils.formatCoords(coords));
                     text.append(".");
                     info(text);
@@ -122,7 +122,7 @@ public class LocateCommand extends Command {
             for (MapDecorations.Entry decoration : mapDecorationsComponent.decorations().values()) {
                 if (decoration.type().value().assetId().toString().equals("minecraft:woodland_mansion")) {
                     Vec3 coords = new Vec3(decoration.x(), 62, decoration.z());
-                    MutableComponent text = Component.literal("Mansion located at ");
+                    MutableComponent text = Component.literal("林地府邸位于 ");
                     text.append(ChatUtils.formatCoords(coords));
                     text.append(".");
                     info(text);
@@ -149,7 +149,7 @@ public class LocateCommand extends Command {
                 for (MapDecorations.Entry decoration : mapDecorationsComponent.decorations().values()) {
                     if (decoration.type().value().assetId().toString().equals("minecraft:ocean_monument")) {
                         Vec3 coords = new Vec3(decoration.x(), 62, decoration.z());
-                        MutableComponent text = Component.literal("Monument located at ");
+                        MutableComponent text = Component.literal("海底神殿位于 ");
                         text.append(ChatUtils.formatCoords(coords));
                         text.append(".");
                         info(text);
@@ -168,7 +168,7 @@ public class LocateCommand extends Command {
                     error("No monument found. Try using an (highlight)ocean monument map(default) for more success.");
                     return SINGLE_SUCCESS;
                 }
-                MutableComponent text = Component.literal("Monument located at ");
+                MutableComponent text = Component.literal("海底神殿位于 ");
                 text.append(ChatUtils.formatCoords(coords));
                 text.append(".");
                 info(text);
@@ -196,7 +196,7 @@ public class LocateCommand extends Command {
                     error("No stronghold found nearby. You can use (highlight)Ender Eyes(default) for more success.");
                     return SINGLE_SUCCESS;
                 }
-                MutableComponent text = Component.literal("Stronghold located at ");
+                MutableComponent text = Component.literal("要塞位于 ");
                 text.append(ChatUtils.formatCoords(coords));
                 text.append(".");
                 info(text);
@@ -225,7 +225,7 @@ public class LocateCommand extends Command {
                 error("No nether fortress found.");
                 return SINGLE_SUCCESS;
             }
-            MutableComponent text = Component.literal("Fortress located at ");
+            MutableComponent text = Component.literal("要塞位于 ");
             text.append(ChatUtils.formatCoords(coords));
             text.append(".");
             info(text);
@@ -250,7 +250,7 @@ public class LocateCommand extends Command {
                 error("No end city found.");
                 return SINGLE_SUCCESS;
             }
-            MutableComponent text = Component.literal("End city located at ");
+            MutableComponent text = Component.literal("末地城位于 ");
             text.append(ChatUtils.formatCoords(coords));
             text.append(".");
             info(text);
@@ -282,7 +282,7 @@ public class LocateCommand extends Command {
             }
 
             Vec3 coords = Vec3.atLowerCornerOf(lodestoneTrackerComponent.target().get().pos());
-            MutableComponent text = Component.literal("Lodestone located at ");
+            MutableComponent text = Component.literal("磁石位于 ");
             text.append(ChatUtils.formatCoords(coords));
             text.append(".");
             info(text);
@@ -366,7 +366,7 @@ public class LocateCommand extends Command {
 
         MeteorClient.EVENT_BUS.unsubscribe(this);
         Vec3 coords = new Vec3(intersection[0], 0, intersection[1]);
-        MutableComponent text = Component.literal("Stronghold roughly located at ");
+        MutableComponent text = Component.literal("要塞大致位于 ");
         text.append(ChatUtils.formatCoords(coords));
         text.append(".");
         info(text);

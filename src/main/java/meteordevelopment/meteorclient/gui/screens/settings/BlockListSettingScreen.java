@@ -20,7 +20,7 @@ import java.util.function.Predicate;
 
 public class BlockListSettingScreen extends CollectionListSettingScreen<Block> {
     public BlockListSettingScreen(GuiTheme theme, BlockListSetting setting) {
-        super(theme, "Select Blocks", setting, setting.get(), BuiltInRegistries.BLOCK);
+        super(theme, "选择方块", setting, setting.get(), BuiltInRegistries.BLOCK);
     }
 
     @Override

@@ -15,7 +15,7 @@ import static meteordevelopment.meteorclient.MeteorClient.mc;
 
 public class AddMicrosoftAccountScreen extends AddAccountScreen {
     public AddMicrosoftAccountScreen(GuiTheme theme, AccountsScreen parent) {
-        super(theme, "Add Microsoft Account", parent);
+        super(theme, "添加微软账号", parent);
     }
 
     @Override

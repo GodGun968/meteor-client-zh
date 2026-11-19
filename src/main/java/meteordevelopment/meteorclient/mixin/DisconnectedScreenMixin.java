@@ -47,7 +47,7 @@ public abstract class DisconnectedScreenMixin extends Screen {
             layout.addChild(reconnectBtn);
 
             layout.addChild(
-                new Button.Builder(Component.literal("Toggle Auto Reconnect"), _ -> {
+                new Button.Builder(Component.literal("切换自动重连"), _ -> {
                     autoReconnect.toggle();
                     reconnectBtn.setMessage(Component.literal(getText()));
                     time = autoReconnect.time.get() * 20;

@@ -36,8 +36,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NotebotCommand extends Command {
-    private static final SimpleCommandExceptionType INVALID_SONG = new SimpleCommandExceptionType(Component.literal("Invalid song."));
-    private static final DynamicCommandExceptionType INVALID_PATH = new DynamicCommandExceptionType(object -> Component.literal("'%s' is not a valid path.".formatted(object)));
+    private static final SimpleCommandExceptionType INVALID_SONG = new SimpleCommandExceptionType(Component.literal("曲目无效。"));
+    private static final DynamicCommandExceptionType INVALID_PATH = new DynamicCommandExceptionType(object -> Component.literal("'%s' 不是有效路径。".formatted(object)));
 
     private int ticks = -1;
     private final Int2ObjectMap<List<Note>> song = new Int2ObjectOpenHashMap<>(); // tick -> notes

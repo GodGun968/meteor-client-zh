@@ -18,7 +18,7 @@ import java.util.Set;
 
 public class EnchantmentListSettingScreen extends DynamicRegistryListSettingScreen<Enchantment> {
     public EnchantmentListSettingScreen(GuiTheme theme, Setting<Set<ResourceKey<Enchantment>>> setting) {
-        super(theme, "Select Enchantments", setting, setting.get(), Registries.ENCHANTMENT);
+        super(theme, "选择附魔", setting, setting.get(), Registries.ENCHANTMENT);
     }
 
     @Override

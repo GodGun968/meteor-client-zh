@@ -895,7 +895,7 @@ public class KeyboardHud extends HudElement {
         private final WidgetScreen screen;
 
         public CustomKeySettingScreen(GuiTheme theme, CustomKeyListSetting setting, Key key, WidgetScreen screen) {
-            super(theme, "Select Key");
+            super(theme, "选择按键");
             this.setting = setting;
             this.key = key;
             this.screen = screen;

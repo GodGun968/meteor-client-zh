@@ -177,7 +177,7 @@ public class WaypointsModule extends Module {
     public void addDeath(Vec3 deathPos) {
         String time = dateFormat.format(new Date());
         if (dpChat.get()) {
-            MutableComponent text = Component.literal("Died at ");
+            MutableComponent text = Component.literal("死亡于 ");
             text.append(formatCoords(deathPos));
             text.append(String.format(" on %s.", time));
             info(text);

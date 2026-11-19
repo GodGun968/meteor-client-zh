@@ -214,7 +214,7 @@ public class InfinityMiner extends Module {
 
     private void logOut() {
         toggle();
-        mc.player.connection.send(new ClientboundDisconnectPacket(Component.literal("[Infinity Miner] Inventory is full.")));
+        mc.player.connection.send(new ClientboundDisconnectPacket(Component.literal("[无限挖矿] 物品栏已满。")));
     }
 
     private boolean isBaritoneNotMining() {

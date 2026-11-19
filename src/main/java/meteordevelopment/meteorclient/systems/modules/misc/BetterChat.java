@@ -311,7 +311,7 @@ public class BetterChat extends Module {
         message = getPrefix() + message + getSuffix();
 
         if (coordsProtection.get() && containsCoordinates(message)) {
-            MutableComponent warningMessage = Component.literal("It looks like there are coordinates in your message! ");
+            MutableComponent warningMessage = Component.literal("你的消息里似乎含有坐标！");
 
             MutableComponent sendButton = getSendButton(message);
             warningMessage.append(sendButton);
@@ -565,10 +565,10 @@ public class BetterChat extends Module {
     }
 
     private MutableComponent getSendButton(String message) {
-        MutableComponent sendButton = Component.literal("[SEND ANYWAY]");
+        MutableComponent sendButton = Component.literal("[仍然发送]");
         MutableComponent hintBaseText = Component.literal("");
 
-        MutableComponent hintMsg = Component.literal("Send your message to the global chat even if there are coordinates:");
+        MutableComponent hintMsg = Component.literal("即使消息中含坐标，也照样发送到公共聊天：");
         hintMsg.setStyle(hintBaseText.getStyle().applyFormat(ChatFormatting.GRAY));
         hintBaseText.append(hintMsg);
 

@@ -48,7 +48,7 @@ public class NbtCommand extends Command {
             this.toString("copy")
         ))
         .withHoverEvent(new HoverEvent.ShowText(
-            Component.literal("Copy the NBT data to your clipboard.")
+            Component.literal("将 NBT 数据复制到剪贴板。")
         )));
 
     public NbtCommand() {

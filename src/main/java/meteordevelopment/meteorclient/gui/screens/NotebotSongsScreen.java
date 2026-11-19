@@ -31,7 +31,7 @@ public class NotebotSongsScreen extends WindowScreen {
     private WTable table;
 
     public NotebotSongsScreen(GuiTheme theme) {
-        super(theme, "Notebot Songs");
+        super(theme, "自动点歌曲目");
     }
 
     @Override

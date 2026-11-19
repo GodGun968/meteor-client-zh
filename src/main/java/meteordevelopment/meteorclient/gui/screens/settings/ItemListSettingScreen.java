@@ -19,7 +19,7 @@ import java.util.function.Predicate;
 
 public class ItemListSettingScreen extends CollectionListSettingScreen<Item> {
     public ItemListSettingScreen(GuiTheme theme, ItemListSetting setting) {
-        super(theme, "Select Items", setting, setting.get(), BuiltInRegistries.ITEM);
+        super(theme, "选择物品", setting, setting.get(), BuiltInRegistries.ITEM);
     }
 
     @Override

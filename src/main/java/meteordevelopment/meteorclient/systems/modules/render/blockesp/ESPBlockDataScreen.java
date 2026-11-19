@@ -27,7 +27,7 @@ public class ESPBlockDataScreen extends WindowScreen {
     }
 
     private ESPBlockDataScreen(GuiTheme theme, ESPBlockData blockData, Setting<?> setting, @Nullable Runnable firstChangeConsumer) {
-        super(theme, "Configure Block");
+        super(theme, "配置方块");
 
         this.blockData = blockData;
         this.setting = setting;

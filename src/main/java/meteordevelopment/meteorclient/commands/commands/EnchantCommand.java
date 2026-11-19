@@ -24,8 +24,8 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import java.util.function.ToIntFunction;
 
 public class EnchantCommand extends Command {
-    private static final SimpleCommandExceptionType NOT_IN_CREATIVE = new SimpleCommandExceptionType(Component.literal("You must be in creative mode to use this."));
-    private static final SimpleCommandExceptionType NOT_HOLDING_ITEM = new SimpleCommandExceptionType(Component.literal("You need to hold some item to enchant."));
+    private static final SimpleCommandExceptionType NOT_IN_CREATIVE = new SimpleCommandExceptionType(Component.literal("必须在创造模式下才能使用。"));
+    private static final SimpleCommandExceptionType NOT_HOLDING_ITEM = new SimpleCommandExceptionType(Component.literal("你需要手持要附魔的物品。"));
 
     public EnchantCommand() {
         super("enchant", "Enchants the item in your hand. REQUIRES Creative mode.");

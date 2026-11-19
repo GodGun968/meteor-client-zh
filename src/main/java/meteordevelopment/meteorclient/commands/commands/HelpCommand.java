@@ -38,11 +38,11 @@ public class HelpCommand extends Command {
 
     private void showHelp(Command cmd) {
         MutableComponent msg = Component.literal("");
-        msg.append(Component.literal("Help for ").withStyle(ChatFormatting.GRAY).append(Component.literal(cmd.getName()).withStyle(ChatFormatting.YELLOW)));
-        msg.append(Component.literal("\n ")).append(Component.literal("Description: ").withStyle(ChatFormatting.GRAY).append(Component.literal(cmd.getDescription()).withStyle(ChatFormatting.WHITE)));
+        msg.append(Component.literal("帮助：").withStyle(ChatFormatting.GRAY).append(Component.literal(cmd.getName()).withStyle(ChatFormatting.YELLOW)));
+        msg.append(Component.literal("\n ")).append(Component.literal("描述：").withStyle(ChatFormatting.GRAY).append(Component.literal(cmd.getDescription()).withStyle(ChatFormatting.WHITE)));
 
         if (!cmd.getAliases().isEmpty()) {
-            msg.append(Component.literal("\n ")).append(Component.literal("Aliases: ").withStyle(ChatFormatting.GRAY));
+            msg.append(Component.literal("\n ")).append(Component.literal("别名：").withStyle(ChatFormatting.GRAY));
             msg.append(Component.literal(String.join(", ", cmd.getAliases())).withStyle(ChatFormatting.AQUA));
         }
 
@@ -69,6 +69,6 @@ public class HelpCommand extends Command {
             usagesText.append(Component.literal("\n " + cmd).withStyle(ChatFormatting.GREEN));
         }
 
-        return Component.literal("\n Usage:").withStyle(ChatFormatting.GRAY).append(usagesText);
+        return Component.literal("\n 用法：").withStyle(ChatFormatting.GRAY).append(usagesText);
     }
 }

@@ -12,7 +12,7 @@ import meteordevelopment.meteorclient.systems.accounts.types.TheAlteningAccount;
 
 public class AddAlteningAccountScreen extends AddAccountScreen {
     public AddAlteningAccountScreen(GuiTheme theme, AccountsScreen parent) {
-        super(theme, "Add The Altening Account", parent);
+        super(theme, "添加 The Altening 账号", parent);
     }
 
     @Override

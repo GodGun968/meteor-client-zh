@@ -192,8 +192,8 @@ public class BookBot extends Module {
             // Handle the file being empty
             if (file.get().length() == 0) {
                 MutableComponent message = Component.literal("");
-                message.append(Component.literal("The bookbot file is empty! ").withStyle(ChatFormatting.RED));
-                message.append(Component.literal("Click here to edit it.")
+                message.append(Component.literal("书籍机器人文件是空的！").withStyle(ChatFormatting.RED));
+                message.append(Component.literal("点击此处编辑。")
                     .setStyle(Style.EMPTY
                         .applyFormats(ChatFormatting.UNDERLINE, ChatFormatting.RED)
                         .withClickEvent(new ClickEvent.OpenFile(file.get().getAbsolutePath()))

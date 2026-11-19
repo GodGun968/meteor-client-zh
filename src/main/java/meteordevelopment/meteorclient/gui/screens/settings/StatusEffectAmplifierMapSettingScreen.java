@@ -34,7 +34,7 @@ public class StatusEffectAmplifierMapSettingScreen extends WindowScreen {
     private String filterText = "";
 
     public StatusEffectAmplifierMapSettingScreen(GuiTheme theme, Setting<Reference2IntMap<MobEffect>> setting) {
-        super(theme, "Modify Amplifiers");
+        super(theme, "修改等级");
 
         this.setting = setting;
     }

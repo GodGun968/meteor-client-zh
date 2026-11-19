@@ -17,7 +17,7 @@ public class PotionSettingScreen extends WindowScreen {
     private final PotionSetting setting;
 
     public PotionSettingScreen(GuiTheme theme, PotionSetting setting) {
-        super(theme, "Select Potion");
+        super(theme, "选择药水");
 
         this.setting = setting;
     }

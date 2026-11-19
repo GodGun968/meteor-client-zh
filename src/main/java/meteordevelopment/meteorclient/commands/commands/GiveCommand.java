@@ -19,8 +19,8 @@ import net.minecraft.network.protocol.game.ServerboundSetCreativeModeSlotPacket;
 import net.minecraft.world.item.ItemStack;
 
 public class GiveCommand extends Command {
-    private static final SimpleCommandExceptionType NOT_IN_CREATIVE = new SimpleCommandExceptionType(Component.literal("You must be in creative mode to use this."));
-    private static final SimpleCommandExceptionType NO_SPACE = new SimpleCommandExceptionType(Component.literal("No space in hotbar."));
+    private static final SimpleCommandExceptionType NOT_IN_CREATIVE = new SimpleCommandExceptionType(Component.literal("必须在创造模式下才能使用。"));
+    private static final SimpleCommandExceptionType NO_SPACE = new SimpleCommandExceptionType(Component.literal("快捷栏没有空位。"));
 
     public GiveCommand() {
         super("give", "Gives you any item.");

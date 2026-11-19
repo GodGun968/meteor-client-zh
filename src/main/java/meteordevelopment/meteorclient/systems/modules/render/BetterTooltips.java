@@ -305,11 +305,11 @@ public class BetterTooltips extends Module {
 
                         event.appendEnd(Component.literal(count).withStyle(ChatFormatting.DARK_GRAY));
                     } catch (Exception _) {
-                        event.appendEnd(Component.literal("Error getting bytes.").withStyle(ChatFormatting.RED));
+                        event.appendEnd(Component.literal("获取字节时出错。").withStyle(ChatFormatting.RED));
                     }
                 }
                 case DataResult.Error<Tag> _ ->
-                    event.appendEnd(Component.literal("Error getting bytes.").withStyle(ChatFormatting.RED));
+                    event.appendEnd(Component.literal("获取字节时出错。").withStyle(ChatFormatting.RED));
                 default -> throw new MatchException(null, null);
             }
         }
@@ -330,7 +330,7 @@ public class BetterTooltips extends Module {
         else if (event.itemStack.getItem() == Items.ENDER_CHEST && previewEChest()) {
             event.tooltipData = EChestMemory.isKnown()
                 ? new ContainerTooltipComponent(EChestMemory.ITEMS.toArray(ItemStack[]::new), ECHEST_COLOR)
-                : new TextTooltipComponent(Component.literal("Unknown inventory.").withStyle(ChatFormatting.DARK_RED));
+                : new TextTooltipComponent(Component.literal("未知的物品栏。").withStyle(ChatFormatting.DARK_RED));
         }
 
         // Map preview
@@ -437,7 +437,7 @@ public class BetterTooltips extends Module {
         if (showPreviewText) {
             // we don't want to add the spacer if the tooltip is hidden
             if (spacer) event.appendEnd(Component.literal(""));
-            event.appendEnd(Component.literal("Hold " + ChatFormatting.YELLOW + keybind + ChatFormatting.RESET + " to preview"));
+            event.appendEnd(Component.literal("手持 " + ChatFormatting.YELLOW + keybind + ChatFormatting.RESET + " to preview"));
         }
     }
 

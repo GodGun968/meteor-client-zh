@@ -16,7 +16,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 
 public class WaspCommand extends Command {
-    private static final SimpleCommandExceptionType CANT_WASP_SELF = new SimpleCommandExceptionType(Component.literal("You cannot target yourself!"));
+    private static final SimpleCommandExceptionType CANT_WASP_SELF = new SimpleCommandExceptionType(Component.literal("你不能把自己设为目标！"));
 
     public WaspCommand() {
         super("wasp", "Sets the auto wasp target.");

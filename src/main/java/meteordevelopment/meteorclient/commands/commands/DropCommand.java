@@ -22,8 +22,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
 public class DropCommand extends Command {
-    private static final SimpleCommandExceptionType NOT_SPECTATOR = new SimpleCommandExceptionType(Component.literal("Can't drop items while in spectator."));
-    private static final SimpleCommandExceptionType NO_SUCH_ITEM = new SimpleCommandExceptionType(Component.literal("Could not find an item with that name!"));
+    private static final SimpleCommandExceptionType NOT_SPECTATOR = new SimpleCommandExceptionType(Component.literal("旁观模式下无法丢弃物品。"));
+    private static final SimpleCommandExceptionType NO_SUCH_ITEM = new SimpleCommandExceptionType(Component.literal("找不到该名称的物品！"));
 
     public DropCommand() {
         super("drop", "Automatically drops specified items.");

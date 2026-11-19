@@ -255,7 +255,7 @@ public class ProfilesTab extends Tab {
         private final Profile profile;
 
         public ExportProfileScreen(GuiTheme theme, Profile profile) {
-            super(theme, "Export Profile");
+            super(theme, "导出配置");
             this.profile = profile;
         }
 

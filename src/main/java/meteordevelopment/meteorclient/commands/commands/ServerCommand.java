@@ -122,18 +122,18 @@ public class ServerCommand extends Command {
             ipText = Component.literal(ChatFormatting.GRAY + server.ip);
             ipText.setStyle(ipText.getStyle()
                 .withClickEvent(new ClickEvent.CopyToClipboard(server.ip))
-                .withHoverEvent(new HoverEvent.ShowText(Component.literal("Copy to clipboard")))
+                .withHoverEvent(new HoverEvent.ShowText(Component.literal("复制到剪贴板")))
             );
         } else {
             ipText = Component.literal(ChatFormatting.GRAY + server.ip);
             ipText.setStyle(ipText.getStyle()
                 .withClickEvent(new ClickEvent.CopyToClipboard(server.ip))
-                .withHoverEvent(new HoverEvent.ShowText(Component.literal("Copy to clipboard")))
+                .withHoverEvent(new HoverEvent.ShowText(Component.literal("复制到剪贴板")))
             );
             MutableComponent ipv4Text = Component.literal(String.format("%s (%s)", ChatFormatting.GRAY, ipv4));
             ipv4Text.setStyle(ipText.getStyle()
                 .withClickEvent(new ClickEvent.CopyToClipboard(ipv4))
-                .withHoverEvent(new HoverEvent.ShowText(Component.literal("Copy to clipboard")))
+                .withHoverEvent(new HoverEvent.ShowText(Component.literal("复制到剪贴板")))
             );
             ipText.append(ipv4Text);
         }

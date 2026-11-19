@@ -124,7 +124,7 @@ public class AutoWasp extends Module {
                 case CHOOSE_NEW_TARGET -> onActivate();
                 case TOGGLE -> toggle();
                 case DISCONNECT ->
-                    mc.player.connection.handleDisconnect(new ClientboundDisconnectPacket(Component.literal("%s[%sAuto Wasp%s] Lost target.".formatted(ChatFormatting.GRAY, ChatFormatting.BLUE, ChatFormatting.GRAY))));
+                    mc.player.connection.handleDisconnect(new ClientboundDisconnectPacket(Component.literal("%s[%s自动黄蜂%s] 丢失目标。".formatted(ChatFormatting.GRAY, ChatFormatting.BLUE, ChatFormatting.GRAY))));
             }
 
             if (!isActive()) return;

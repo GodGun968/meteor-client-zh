@@ -43,7 +43,7 @@ public class ColorSettingScreen extends WindowScreen {
     private WCheckbox rainbow;
 
     public ColorSettingScreen(GuiTheme theme, Setting<SettingColor> setting) {
-        super(theme, "Select Color");
+        super(theme, "选择颜色");
 
         this.setting = setting;
     }

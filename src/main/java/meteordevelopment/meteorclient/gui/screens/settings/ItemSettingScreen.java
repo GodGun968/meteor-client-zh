@@ -28,7 +28,7 @@ public class ItemSettingScreen extends WindowScreen {
     private String filterText = "";
 
     public ItemSettingScreen(GuiTheme theme, ItemSetting setting) {
-        super(theme, "Select item");
+        super(theme, "选择物品");
 
         this.setting = setting;
     }

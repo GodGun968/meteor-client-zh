@@ -271,7 +271,7 @@ public class ChatUtils {
         if (BaritoneUtils.IS_AVAILABLE) {
             Style style = coordsText.getStyle().applyFormats(ChatFormatting.BOLD)
                 .withHoverEvent(new HoverEvent.ShowText(
-                    Component.literal("Set as Baritone goal")
+                    Component.literal("设为 Baritone 目标")
                 ))
                 .withClickEvent(new MeteorClickEvent(
                     String.format("%sgoto %d %d %d", BaritoneUtils.getPrefix(), (int) pos.x, (int) pos.y, (int) pos.z)

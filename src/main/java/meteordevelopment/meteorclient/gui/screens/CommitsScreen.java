@@ -26,7 +26,7 @@ public class CommitsScreen extends WindowScreen {
     private int statusCode;
 
     public CommitsScreen(GuiTheme theme, MeteorAddon addon) {
-        super(theme, "Commits for " + addon.name);
+        super(theme, "提交记录：" + addon.name);
 
         this.addon = addon;
 

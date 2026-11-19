@@ -18,7 +18,7 @@ import net.minecraft.network.protocol.game.ServerboundMovePlayerPacket;
 import net.minecraft.world.phys.Vec3;
 
 public class DamageCommand extends Command {
-    private final static SimpleCommandExceptionType INVULNERABLE = new SimpleCommandExceptionType(Component.literal("You are invulnerable."));
+    private final static SimpleCommandExceptionType INVULNERABLE = new SimpleCommandExceptionType(Component.literal("你处于无敌状态。"));
 
     public DamageCommand() {
         super("damage", "Damages self", "dmg");

@@ -23,7 +23,7 @@ import java.util.Optional;
 
 public class StatusEffectListSettingScreen extends CollectionListSettingScreen<MobEffect> {
     public StatusEffectListSettingScreen(GuiTheme theme, Setting<List<MobEffect>> setting) {
-        super(theme, "Select Effects", setting, setting.get(), BuiltInRegistries.MOB_EFFECT);
+        super(theme, "选择效果", setting, setting.get(), BuiltInRegistries.MOB_EFFECT);
     }
 
     @Override

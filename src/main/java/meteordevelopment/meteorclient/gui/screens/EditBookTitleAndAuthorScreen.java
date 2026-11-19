@@ -28,7 +28,7 @@ public class EditBookTitleAndAuthorScreen extends WindowScreen {
     private final InteractionHand hand;
 
     public EditBookTitleAndAuthorScreen(GuiTheme theme, ItemStack itemStack, InteractionHand hand) {
-        super(theme, "Edit title & author");
+        super(theme, "编辑标题与作者");
         this.itemStack = itemStack;
         this.hand = hand;
     }

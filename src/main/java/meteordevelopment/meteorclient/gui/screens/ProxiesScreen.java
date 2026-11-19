@@ -38,7 +38,7 @@ public class ProxiesScreen extends WindowScreen {
     private int timer = 0;
 
     public ProxiesScreen(GuiTheme theme) {
-        super(theme, "Proxies");
+        super(theme, "代理");
     }
 
     @Override
@@ -201,7 +201,7 @@ public class ProxiesScreen extends WindowScreen {
         private WContainer settingsContainer;
 
         public ConfigScreen(GuiTheme theme) {
-            super(theme, "Proxies Config");
+            super(theme, "代理配置");
         }
 
         @Override

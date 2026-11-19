@@ -29,8 +29,8 @@ import java.io.File;
 import java.io.IOException;
 
 public class SaveMapCommand extends Command {
-    private static final SimpleCommandExceptionType MAP_NOT_FOUND = new SimpleCommandExceptionType(Component.literal("You must be holding a filled map."));
-    private static final SimpleCommandExceptionType OOPS = new SimpleCommandExceptionType(Component.literal("Something went wrong."));
+    private static final SimpleCommandExceptionType MAP_NOT_FOUND = new SimpleCommandExceptionType(Component.literal("你必须手持一张已绘制的地图。"));
+    private static final SimpleCommandExceptionType OOPS = new SimpleCommandExceptionType(Component.literal("出错了。"));
 
     public SaveMapCommand() {
         super("save-map", "Saves a map to an image.", "sm");

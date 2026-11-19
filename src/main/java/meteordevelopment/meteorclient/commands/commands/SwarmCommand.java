@@ -39,7 +39,7 @@ import java.util.Random;
 
 public class SwarmCommand extends Command {
 
-    private final static SimpleCommandExceptionType SWARM_NOT_ACTIVE = new SimpleCommandExceptionType(Component.literal("The swarm module must be active to use this command."));
+    private final static SimpleCommandExceptionType SWARM_NOT_ACTIVE = new SimpleCommandExceptionType(Component.literal("使用此命令必须先启用集群模块。"));
     private @Nullable ObjectIntPair<String> pendingConnection;
 
     public SwarmCommand() {
@@ -69,7 +69,7 @@ public class SwarmCommand extends Command {
                         pendingConnection = new ObjectIntImmutablePair<>(ip, port);
 
                         info("Are you sure you want to connect to '%s:%s'?", ip, port);
-                        info(Component.literal("Click here to confirm").setStyle(Style.EMPTY
+                        info(Component.literal("点击此处确认").setStyle(Style.EMPTY
                             .applyFormats(ChatFormatting.UNDERLINE, ChatFormatting.GREEN)
                             .withClickEvent(new MeteorClickEvent(".swarm join confirm"))
                         ));

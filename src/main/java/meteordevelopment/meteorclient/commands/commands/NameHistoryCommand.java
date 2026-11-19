@@ -60,20 +60,20 @@ public class NameHistoryCommand extends Command {
                         )
                     )
                     .withHoverEvent(new HoverEvent.ShowText(
-                        Component.literal("View on laby.net")
+                        Component.literal("在 laby.net 查看")
                             .withStyle(ChatFormatting.YELLOW)
                             .withStyle(ChatFormatting.ITALIC)
                     ))
                 );
 
-                info(initial.append(Component.literal(" Username History:").withStyle(ChatFormatting.GRAY)));
+                info(initial.append(Component.literal(" 用户名历史：").withStyle(ChatFormatting.GRAY)));
 
                 for (Name entry : history.username_history) {
                     MutableComponent nameText = Component.literal(entry.name);
                     nameText.withStyle(ChatFormatting.AQUA);
 
                     if (entry.changed_at != null && entry.changed_at.getTime() != 0) {
-                        MutableComponent changed = Component.literal("Changed at: ");
+                        MutableComponent changed = Component.literal("更改于：");
                         changed.withStyle(ChatFormatting.GRAY);
 
                         DateFormat formatter = new SimpleDateFormat("hh:mm:ss, dd/MM/yyyy");
@@ -85,7 +85,7 @@ public class NameHistoryCommand extends Command {
                     if (!entry.accurate) {
                         MutableComponent text = Component.literal("*").withStyle(ChatFormatting.WHITE);
 
-                        text.setStyle(text.getStyle().withHoverEvent(new HoverEvent.ShowText(Component.literal("This name history entry is not accurate according to laby.net"))));
+                        text.setStyle(text.getStyle().withHoverEvent(new HoverEvent.ShowText(Component.literal("据 laby.net 显示，这条历史名称记录不准确"))));
 
                         nameText.append(text);
                     }

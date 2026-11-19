@@ -51,7 +51,7 @@ public abstract class BookEditScreenMixin extends Screen {
     @Inject(method = "init", at = @At("TAIL"))
     private void onInit(CallbackInfo ci) {
         addRenderableWidget(
-            new Button.Builder(Component.literal("Copy"), _ -> {
+            new Button.Builder(Component.literal("复制"), _ -> {
                 ListTag listTag = new ListTag();
                 pages.stream().map(StringTag::valueOf).forEach(listTag::add);
 
@@ -79,7 +79,7 @@ public abstract class BookEditScreenMixin extends Screen {
         );
 
         addRenderableWidget(
-            new Button.Builder(Component.literal("Paste"), _ -> {
+            new Button.Builder(Component.literal("粘贴"), _ -> {
                 String clipboard = mc.keyboardHandler.getClipboard();
                 if (clipboard.isEmpty()) return;
 

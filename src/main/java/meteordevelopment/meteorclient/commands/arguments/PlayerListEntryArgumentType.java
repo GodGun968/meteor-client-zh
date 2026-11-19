@@ -24,7 +24,7 @@ import static meteordevelopment.meteorclient.MeteorClient.mc;
 
 public class PlayerListEntryArgumentType implements ArgumentType<PlayerInfo> {
     private static final PlayerListEntryArgumentType INSTANCE = new PlayerListEntryArgumentType();
-    private static final DynamicCommandExceptionType NO_SUCH_PLAYER = new DynamicCommandExceptionType(name -> Component.literal("Player list entry with name " + name + " doesn't exist."));
+    private static final DynamicCommandExceptionType NO_SUCH_PLAYER = new DynamicCommandExceptionType(name -> Component.literal("名为此的玩家列表项 " + name + " doesn't exist."));
 
     private static final Collection<String> EXAMPLES = List.of("seasnail8169", "MineGame159");
 

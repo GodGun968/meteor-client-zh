@@ -12,7 +12,7 @@ import meteordevelopment.meteorclient.systems.accounts.types.SessionAccount;
 
 public class AddSessionAccountScreen extends AddAccountScreen {
     public AddSessionAccountScreen(GuiTheme theme, AccountsScreen parent) {
-        super(theme, "Add Session Account", parent);
+        super(theme, "添加会话账号", parent);
     }
 
     @Override

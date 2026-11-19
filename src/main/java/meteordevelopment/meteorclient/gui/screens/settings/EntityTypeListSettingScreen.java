@@ -46,7 +46,7 @@ public class EntityTypeListSettingScreen extends WindowScreen {
     int hasAnimal = 0, hasWaterAnimal = 0, hasMonster = 0, hasAmbient = 0, hasMisc = 0;
 
     public EntityTypeListSettingScreen(GuiTheme theme, EntityTypeListSetting setting) {
-        super(theme, "Select entities");
+        super(theme, "选择实体");
         this.setting = setting;
 
         // Filter

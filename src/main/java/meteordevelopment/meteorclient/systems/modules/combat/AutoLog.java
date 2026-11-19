@@ -205,7 +205,7 @@ public class AutoLog extends Module {
         for (Entity entity : mc.level.entitiesForRendering()) {
             if (entity instanceof Player player && player.getUUID() != mc.player.getUUID()) {
                 if (onlyTrusted.get() && player != mc.player && !Friends.get().isFriend(player)) {
-                    disconnect(Component.literal("Non-trusted player '" + ChatFormatting.RED + player.getName().getString() + ChatFormatting.WHITE + "' appeared in your render distance."));
+                    disconnect(Component.literal("未受信任的玩家 '" + ChatFormatting.RED + player.getName().getString() + ChatFormatting.WHITE + "' appeared in your render distance."));
                     if (toggleOff.get()) this.toggle();
                     return;
                 }
@@ -256,12 +256,12 @@ public class AutoLog extends Module {
     }
 
     private void disconnect(Component reason) {
-        MutableComponent text = Component.literal("[AutoLog] ");
+        MutableComponent text = Component.literal("[自动登出] ");
         text.append(reason);
 
         AutoReconnect autoReconnect = Modules.get().get(AutoReconnect.class);
         if (autoReconnect.isActive() && toggleAutoReconnect.get()) {
-            text.append(Component.literal("\n\nINFO - AutoReconnect was disabled").withColor(CommonColors.GRAY));
+            text.append(Component.literal("\n\n提示 - 自动重连已被禁用").withColor(CommonColors.GRAY));
             autoReconnect.toggle();
         }
 
